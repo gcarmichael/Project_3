@@ -31,26 +31,27 @@ describe('SleepCalc', function(){
   it('should be able to calculate four wake times', function(){
     var sleepCalc = new SleepCalc();
     var wakeTimes = sleepCalc.calcWakeTime();
-    console.log(wakeTimes.wake1);
     assert.equal(moment().add(1.5, 'hours').format('H:mm'), wakeTimes.wake1);
-    assert.equal(moment(wakeTimes.wake1, 'H:mm').add(sleepCalc.cycleDuration, 'hours').format('H:mm'), wakeTimes.wake2);
-    assert.equal(moment(wakeTimes.wake2, 'H:mm').add(sleepCalc.cycleDuration, 'hours').format('H:mm'), wakeTimes.wake3);
-    assert.equal(moment(wakeTimes.wake3, 'H:mm').add(sleepCalc.cycleDuration, 'hours').format('H:mm'), wakeTimes.wake4);
+    assert.equal(moment(wakeTimes.wake1, 'H:mm').add(1.5, 'hours').format('H:mm'), wakeTimes.wake2);
+    assert.equal(moment(wakeTimes.wake2, 'H:mm').add(1.5, 'hours').format('H:mm'), wakeTimes.wake3);
+    assert.equal(moment(wakeTimes.wake3, 'H:mm').add(1.5, 'hours').format('H:mm'), wakeTimes.wake4);
   });
 
   it('should be able to set a wakeTime through calcSleepTime', function(){
     var sleepCalc = new SleepCalc();
-    sleepCalc.calcSleepTime();
-    assert.deepEqual(true, sleepCalc.wakeTime);
+    sleepCalc.calcSleepTime("9:00");
+    assert.deepEqual(moment("9:00", "H:mm").format('H:mm'), sleepCalc.wakeTime);
   });
 
   it('should be able to calculate four sleep times', function(){
     var sleepCalc = new SleepCalc();
-    sleepCalc.calcSleepTime();
-    assert.equal((sleepCalc.wakeTime - sleepCalc.cycleDuration), sleepCalc.sleep1);
-    assert.equal((sleepCalc.sleep1 - sleepCalc.cycleDuration), sleepCalc.sleep2);
-    assert.equal((sleepCalc.sleep2 - sleepCalc.cycleDuration), sleepCalc.sleep3);
-    assert.equal((sleepCalc.sleep3 - sleepCalc.cycleDuration), sleepCalc.sleep4);
+    var sleepTimes = sleepCalc.calcSleepTime("9:00");
+
+    assert.equal(moment("9:00", "H:mm").subtract(1.5, 'hours').format('H:mm'), sleepTimes.sleep1);
+    assert.equal(moment(sleepTimes.sleep1, 'H:mm').subtract(1.5, 'hours').format('H:mm'), sleepTimes.sleep2)
+    assert.equal(moment(sleepTimes.sleep2, 'H:mm').subtract(1.5, 'hours').format('H:mm'), sleepTimes.sleep3)
+    assert.equal(moment(sleepTimes.sleep3, 'H:mm').subtract(1.5, 'hours').format('H:mm'), sleepTimes.sleep4)
+    assert.equal(moment(sleepTimes.sleep4, 'H:mm').subtract(1.5, 'hours').format('H:mm'), sleepTimes.sleep5)
   });
 
 });

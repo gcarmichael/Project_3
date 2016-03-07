@@ -13,6 +13,11 @@ SleepCalc.prototype = {
     return newTime;
   },
 
+  subtractHours: function(time){
+    var newTime = moment(time, 'H:mm').subtract(this.cycleDuration, 'hours').format('H:mm');
+    return newTime;
+  },
+
   calcWakeTime: function(){
     this.sleepTime = moment().format('H:mm'); // Add 14 minutes
     var wake1 = this.addHours(this.sleepTime);
@@ -28,7 +33,25 @@ SleepCalc.prototype = {
       wake4: wake4,
       wake5: wake5
     }
+  },
+
+  calcSleepTime: function(time){
+    this.wakeTime = moment(time, "H:mm").format('H:mm');
+    var sleep1 = this.subtractHours(this.wakeTime);
+    var sleep2 = this.subtractHours(sleep1);
+    var sleep3 = this.subtractHours(sleep2);
+    var sleep4 = this.subtractHours(sleep3);
+    var sleep5 = this.subtractHours(sleep4);
+
+    return {
+      sleep1: sleep1,
+      sleep2: sleep2,
+      sleep3: sleep3,
+      sleep4: sleep4,
+      sleep5: sleep5
+    }
   }
+
 };
 
 module.exports = SleepCalc;
