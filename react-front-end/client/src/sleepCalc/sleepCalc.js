@@ -25,13 +25,15 @@ SleepCalc.prototype = {
     var wake3 = this.addHours(wake2);
     var wake4 = this.addHours(wake3);
     var wake5 = this.addHours(wake4);
+    var wake6 = this.addHours(wake5);
 
     return {
       wake1: wake1,
       wake2: wake2,
       wake3: wake3,
       wake4: wake4,
-      wake5: wake5
+      wake5: wake5,
+      wake6: wake6
     }
   },
 
@@ -42,16 +44,17 @@ SleepCalc.prototype = {
     var sleep3 = this.subtractHours(sleep2);
     var sleep4 = this.subtractHours(sleep3);
     var sleep5 = this.subtractHours(sleep4);
+    var sleep6 = this.subtractHours(sleep5);
 
     return {
       sleep1: sleep1,
       sleep2: sleep2,
       sleep3: sleep3,
       sleep4: sleep4,
-      sleep5: sleep5
+      sleep5: sleep5,
+      sleep6: sleep6
     }
   }
-
 };
 
 module.exports = SleepCalc;

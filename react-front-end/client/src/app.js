@@ -1,9 +1,10 @@
 var React = require('react');
 var ReactDOM = require('react-dom');
+var CalcBox = require('./components/CalcBox');
 
 window.onload = function(){
   ReactDOM.render(
-    <h1> React Start </h1>,
+    <CalcBox></CalcBox>,
     document.getElementById('app')
   );
 }

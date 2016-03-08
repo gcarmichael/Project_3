@@ -47,6 +47,8 @@ describe('SleepCalc', function(){
     var sleepCalc = new SleepCalc();
     var sleepTimes = sleepCalc.calcSleepTime("9:00");
 
+    console.log(sleepTimes);
+
     assert.equal(moment("9:00", "H:mm").subtract(1.5, 'hours').format('H:mm'), sleepTimes.sleep1);
     assert.equal(moment(sleepTimes.sleep1, 'H:mm').subtract(1.5, 'hours').format('H:mm'), sleepTimes.sleep2)
     assert.equal(moment(sleepTimes.sleep2, 'H:mm').subtract(1.5, 'hours').format('H:mm'), sleepTimes.sleep3)
