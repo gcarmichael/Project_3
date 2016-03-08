@@ -1,4 +1,6 @@
 var React = require('react');
+var SleepCalc = require('./../sleepCalc/sleepCalc');
+
 var SleepCalc = new SleepCalc();
 
 var WakeDisplay = React.createClass({

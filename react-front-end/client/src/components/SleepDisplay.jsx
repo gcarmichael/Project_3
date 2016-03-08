@@ -1,12 +1,33 @@
 var React = require('react');
+var SleepCalc = require('./../sleepCalc/sleepCalc');
+
 var SleepCalc = new SleepCalc();
 
 var SleepDisplay = React.createClass({
+  getInitialState: function(){
+    return {hour: "", minute: ""};
+  },
+
+  handleHourChange: function(event){
+    this.setState({hour: event.target.value});
+  },
+
+  handleMinuteChange: function(event){
+    this.setState({minute: event.target.value});
+  },
+
+  handleSubmit: function(event){
+    event.preventDefault();
+    var hour = this.state.hour;
+    var minute = this.state.minute;
+    this.setState({hour: hour, minute: minute});
+  },
+
   render: function(){
     return(
       <div>
-      <h2>Enter when you have to wake up</h2>
-        <form className="wakeForm">
+      <h2>Enter when you have to wake up:</h2>
+        <form className="wakeForm" onSubmit={this.handleSubmit}>
           <input
             type="text"
             placeholder="Hour"
