@@ -9,17 +9,17 @@ var SleepCalc = function(){
 SleepCalc.prototype = {
 
   addHours: function(time){
-    var newTime = moment(time, 'H:mm').add(this.cycleDuration, 'hours').format('H:mm');
+    var newTime = moment(time, 'HH:mm').add(this.cycleDuration, 'hours').format('HH:mm');
     return newTime;
   },
 
   subtractHours: function(time){
-    var newTime = moment(time, 'H:mm').subtract(this.cycleDuration, 'hours').format('H:mm');
+    var newTime = moment(time, 'HH:mm').subtract(this.cycleDuration, 'hours').format('HH:mm');
     return newTime;
   },
 
   calcWakeTime: function(){
-    this.sleepTime = moment().format('H:mm'); // Add 14 minutes
+    this.sleepTime = moment().format('HH:mm'); // Add 14 minutes
     var wake1 = this.addHours(this.sleepTime);
     var wake2 = this.addHours(wake1);
     var wake3 = this.addHours(wake2);
@@ -38,7 +38,7 @@ SleepCalc.prototype = {
   },
 
   calcSleepTime: function(time){
-    this.wakeTime = moment(time, "H:mm").format('H:mm');
+    this.wakeTime = moment(time, "HH:mm").format('HH:mm');
     var sleep1 = this.subtractHours(this.wakeTime);
     var sleep2 = this.subtractHours(sleep1);
     var sleep3 = this.subtractHours(sleep2);

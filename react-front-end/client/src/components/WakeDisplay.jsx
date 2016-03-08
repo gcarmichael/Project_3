@@ -38,12 +38,17 @@ var WakeDisplay = React.createClass({
         <div>
           <h2>If you sleep now, you should aim to wake at:</h2>
             <ul>
-              <li>{this.state.wakeTimes.wake6}</li>
-              <li>{this.state.wakeTimes.wake5}</li>
-              <li>{this.state.wakeTimes.wake4}</li>
-              <li>{this.state.wakeTimes.wake3}</li>
-              <li>{this.state.wakeTimes.wake2}</li>
-              <li>{this.state.wakeTimes.wake1}</li>
+              <li id="time1">5/6 Cycles:</li>
+              <li id="time1">{this.state.wakeTimes.wake6}</li>
+              <li id="time2">{this.state.wakeTimes.wake5}</li>
+              <br/>
+              <li id="time3">3/4 Cycles:</li>
+              <li id="time3">{this.state.wakeTimes.wake4}</li>
+              <li id="time4">{this.state.wakeTimes.wake3}</li>
+              <br/>
+              <li id="time5">1/2 Cycles:</li>
+              <li id="time5">{this.state.wakeTimes.wake2}</li>
+              <li id="time6">{this.state.wakeTimes.wake1}</li>
             </ul>
             <a href="#" onClick={this.handleBack}>Back to Calulator</a>
         </div>

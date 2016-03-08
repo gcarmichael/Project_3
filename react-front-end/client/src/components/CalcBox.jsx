@@ -8,7 +8,7 @@ var sleepCalc = new SleepCalc();
 
 var CalcBox = React.createClass({
   getInitialState: function(){
-    return {showSleepDisp: true, showWakeDisp: true}
+    return {showSleepDisp: true, showWakeDisp: true};
   },
 
   toggleWakeDisplay: function(){

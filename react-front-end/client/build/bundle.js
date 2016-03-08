@@ -19726,17 +19726,17 @@
 	SleepCalc.prototype = {
 
 	  addHours: function addHours(time) {
-	    var newTime = moment(time, 'H:mm').add(this.cycleDuration, 'hours').format('H:mm');
+	    var newTime = moment(time, 'HH:mm').add(this.cycleDuration, 'hours').format('HH:mm');
 	    return newTime;
 	  },
 
 	  subtractHours: function subtractHours(time) {
-	    var newTime = moment(time, 'H:mm').subtract(this.cycleDuration, 'hours').format('H:mm');
+	    var newTime = moment(time, 'HH:mm').subtract(this.cycleDuration, 'hours').format('HH:mm');
 	    return newTime;
 	  },
 
 	  calcWakeTime: function calcWakeTime() {
-	    this.sleepTime = moment().format('H:mm'); // Add 14 minutes
+	    this.sleepTime = moment().format('HH:mm'); // Add 14 minutes
 	    var wake1 = this.addHours(this.sleepTime);
 	    var wake2 = this.addHours(wake1);
 	    var wake3 = this.addHours(wake2);
@@ -19755,7 +19755,7 @@
 	  },
 
 	  calcSleepTime: function calcSleepTime(time) {
-	    this.wakeTime = moment(time, "H:mm").format('H:mm');
+	    this.wakeTime = moment(time, "HH:mm").format('HH:mm');
 	    var sleep1 = this.subtractHours(this.wakeTime);
 	    var sleep2 = this.subtractHours(sleep1);
 	    var sleep3 = this.subtractHours(sleep2);
@@ -32672,7 +32672,7 @@
 	        React.createElement(
 	          'p',
 	          null,
-	          'Or'
+	          '________ or ________'
 	        )
 	      );
 	    } else {
@@ -32697,32 +32697,49 @@
 	          null,
 	          React.createElement(
 	            'li',
-	            null,
+	            { id: 'time1' },
+	            '5/6 Cycles:'
+	          ),
+	          React.createElement(
+	            'li',
+	            { id: 'time1' },
 	            this.state.sleepTimes.sleep6
 	          ),
 	          React.createElement(
 	            'li',
-	            null,
+	            { id: 'time2' },
 	            this.state.sleepTimes.sleep5
+	          ),
+	          React.createElement('br', null),
+	          React.createElement(
+	            'li',
+	            { id: 'time3' },
+	            '5/6 Cycles:'
 	          ),
 	          React.createElement(
 	            'li',
-	            null,
+	            { id: 'time3' },
 	            this.state.sleepTimes.sleep4
 	          ),
 	          React.createElement(
 	            'li',
-	            null,
+	            { id: 'time4' },
 	            this.state.sleepTimes.sleep3
+	          ),
+	          React.createElement('br', null),
+	          React.createElement(
+	            'li',
+	            { id: 'time5' },
+	            '5/6 Cycles:'
 	          ),
 	          React.createElement(
 	            'li',
-	            null,
+	            { id: 'time5' },
 	            this.state.sleepTimes.sleep2
 	          ),
 	          React.createElement(
 	            'li',
-	            null,
+	            { id: 'time6' },
 	            this.state.sleepTimes.sleep1
 	          )
 	        ),
@@ -32803,32 +32820,49 @@
 	          null,
 	          React.createElement(
 	            'li',
-	            null,
+	            { id: 'time1' },
+	            '5/6 Cycles:'
+	          ),
+	          React.createElement(
+	            'li',
+	            { id: 'time1' },
 	            this.state.wakeTimes.wake6
 	          ),
 	          React.createElement(
 	            'li',
-	            null,
+	            { id: 'time2' },
 	            this.state.wakeTimes.wake5
+	          ),
+	          React.createElement('br', null),
+	          React.createElement(
+	            'li',
+	            { id: 'time3' },
+	            '3/4 Cycles:'
 	          ),
 	          React.createElement(
 	            'li',
-	            null,
+	            { id: 'time3' },
 	            this.state.wakeTimes.wake4
 	          ),
 	          React.createElement(
 	            'li',
-	            null,
+	            { id: 'time4' },
 	            this.state.wakeTimes.wake3
+	          ),
+	          React.createElement('br', null),
+	          React.createElement(
+	            'li',
+	            { id: 'time5' },
+	            '1/2 Cycles:'
 	          ),
 	          React.createElement(
 	            'li',
-	            null,
+	            { id: 'time5' },
 	            this.state.wakeTimes.wake2
 	          ),
 	          React.createElement(
 	            'li',
-	            null,
+	            { id: 'time6' },
 	            this.state.wakeTimes.wake1
 	          )
 	        ),

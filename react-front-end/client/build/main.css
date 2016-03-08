@@ -1,3 +1,23 @@
 .hide-me{
   display: none;
 }
+
+li {
+  list-style: none;
+}
+
+#time1, #time2{
+  color: green;
+}
+
+#time3, #time4{
+  color: orange;
+}
+
+#time5, #time6{
+  color: red;
+}
+
+a, a:visited {
+  color: black;
+}
