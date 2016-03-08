@@ -1,11 +1,10 @@
 var React = require('react');
 var SleepCalc = require('./../sleepCalc/sleepCalc');
-
-var SleepCalc = new SleepCalc();
+var sleepCalc = new SleepCalc();
 
 var SleepDisplay = React.createClass({
   getInitialState: function(){
-    return {hour: "", minute: ""};
+    return {hour: "", minute: "", sleepTimes: undefined};
   },
 
   handleHourChange: function(event){
@@ -20,10 +19,12 @@ var SleepDisplay = React.createClass({
     event.preventDefault();
     var hour = this.state.hour;
     var minute = this.state.minute;
-    this.setState({hour: hour, minute: minute});
+    var sleepTimes = sleepCalc.calcSleepTime(hour+":"+minute);
+    this.setState({hour: hour, minute: minute, sleepTimes: sleepTimes});
   },
 
   render: function(){
+    if(this.state.sleepTimes === undefined){
     return(
       <div>
       <h2>Enter when you have to wake up:</h2>
@@ -47,6 +48,21 @@ var SleepDisplay = React.createClass({
         </form>
       </div>
     );
+  } else {
+      return(
+        <div>
+          <h1>You should aim to sleep at:</h1>
+            <ul>
+              <li>{this.state.sleepTimes.sleep1}</li>
+              <li>{this.state.sleepTimes.sleep2}</li>
+              <li>{this.state.sleepTimes.sleep3}</li>
+              <li>{this.state.sleepTimes.sleep4}</li>
+              <li>{this.state.sleepTimes.sleep5}</li>
+              <li>{this.state.sleepTimes.sleep6}</li>
+            </ul>
+        </div>
+      );
+    }
   }
 });
 

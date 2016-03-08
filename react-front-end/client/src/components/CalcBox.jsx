@@ -4,7 +4,7 @@ var SleepCalc = require('./../sleepCalc/sleepCalc');
 var SleepDisplay = require('./SleepDisplay');
 var WakeDisplay = require('./WakeDisplay');
 
-var SleepCalc = new SleepCalc();
+var sleepCalc = new SleepCalc();
 
 var CalcBox = React.createClass({
   render: function(){

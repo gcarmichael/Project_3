@@ -19667,7 +19667,7 @@
 	var SleepDisplay = __webpack_require__(260);
 	var WakeDisplay = __webpack_require__(261);
 
-	var SleepCalc = new SleepCalc();
+	var sleepCalc = new SleepCalc();
 
 	var CalcBox = React.createClass({
 	  displayName: 'CalcBox',
@@ -32582,14 +32582,13 @@
 
 	var React = __webpack_require__(1);
 	var SleepCalc = __webpack_require__(160);
-
-	var SleepCalc = new SleepCalc();
+	var sleepCalc = new SleepCalc();
 
 	var SleepDisplay = React.createClass({
 	  displayName: 'SleepDisplay',
 
 	  getInitialState: function getInitialState() {
-	    return { hour: "", minute: "" };
+	    return { hour: "", minute: "", sleepTimes: undefined };
 	  },
 
 	  handleHourChange: function handleHourChange(event) {
@@ -32604,39 +32603,86 @@
 	    event.preventDefault();
 	    var hour = this.state.hour;
 	    var minute = this.state.minute;
-	    this.setState({ hour: hour, minute: minute });
+	    var sleepTimes = sleepCalc.calcSleepTime(hour + ":" + minute);
+	    this.setState({ hour: hour, minute: minute, sleepTimes: sleepTimes });
 	  },
 
 	  render: function render() {
-	    return React.createElement(
-	      'div',
-	      null,
-	      React.createElement(
-	        'h2',
+	    if (this.state.sleepTimes === undefined) {
+	      return React.createElement(
+	        'div',
 	        null,
-	        'Enter when you have to wake up:'
-	      ),
-	      React.createElement(
-	        'form',
-	        { className: 'wakeForm', onSubmit: this.handleSubmit },
-	        React.createElement('input', {
-	          type: 'text',
-	          placeholder: 'Hour',
-	          value: this.state.hour,
-	          onChange: this.handleHourChange
-	        }),
-	        React.createElement('input', {
-	          type: 'text',
-	          placeholder: 'Minute',
-	          value: this.state.minute,
-	          onChange: this.handleMinuteChange
-	        }),
-	        React.createElement('input', {
-	          type: 'submit',
-	          value: 'Generate Times to Sleep'
-	        })
-	      )
-	    );
+	        React.createElement(
+	          'h2',
+	          null,
+	          'Enter when you have to wake up:'
+	        ),
+	        React.createElement(
+	          'form',
+	          { className: 'wakeForm', onSubmit: this.handleSubmit },
+	          React.createElement('input', {
+	            type: 'text',
+	            placeholder: 'Hour',
+	            value: this.state.hour,
+	            onChange: this.handleHourChange
+	          }),
+	          React.createElement('input', {
+	            type: 'text',
+	            placeholder: 'Minute',
+	            value: this.state.minute,
+	            onChange: this.handleMinuteChange
+	          }),
+	          React.createElement('input', {
+	            type: 'submit',
+	            value: 'Generate Times to Sleep'
+	          })
+	        )
+	      );
+	    } else {
+	      return React.createElement(
+	        'div',
+	        null,
+	        React.createElement(
+	          'h1',
+	          null,
+	          'You should aim to sleep at:'
+	        ),
+	        React.createElement(
+	          'ul',
+	          null,
+	          React.createElement(
+	            'li',
+	            null,
+	            this.state.sleepTimes.sleep1
+	          ),
+	          React.createElement(
+	            'li',
+	            null,
+	            this.state.sleepTimes.sleep2
+	          ),
+	          React.createElement(
+	            'li',
+	            null,
+	            this.state.sleepTimes.sleep3
+	          ),
+	          React.createElement(
+	            'li',
+	            null,
+	            this.state.sleepTimes.sleep4
+	          ),
+	          React.createElement(
+	            'li',
+	            null,
+	            this.state.sleepTimes.sleep5
+	          ),
+	          React.createElement(
+	            'li',
+	            null,
+	            this.state.sleepTimes.sleep6
+	          )
+	        )
+	      );
+	    }
 	  }
 	});
 
@@ -32651,7 +32697,7 @@
 	var React = __webpack_require__(1);
 	var SleepCalc = __webpack_require__(160);
 
-	var SleepCalc = new SleepCalc();
+	var sleepCalc = new SleepCalc();
 
 	var WakeDisplay = React.createClass({
 	  displayName: 'WakeDisplay',
