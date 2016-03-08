@@ -15,6 +15,7 @@ var WakeDisplay = React.createClass({
   },
 
   handleBack: function(){
+    this.props.toggleSleepDisplay();
     this.setState({wakeTimes: undefined});
   },
 

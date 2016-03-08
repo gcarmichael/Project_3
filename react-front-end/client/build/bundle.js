@@ -19677,11 +19677,19 @@
 	  },
 
 	  toggleWakeDisplay: function toggleWakeDisplay() {
-	    this.setState({ showWakeDisp: false });
+	    if (this.state.showWakeDisp) {
+	      this.setState({ showWakeDisp: false });
+	    } else {
+	      this.setState({ showWakeDisp: true });
+	    }
 	  },
 
 	  toggleSleepDisplay: function toggleSleepDisplay() {
-	    this.setState({ showSleepDisp: false });
+	    if (this.state.showSleepDisp) {
+	      this.setState({ showSleepDisp: false });
+	    } else {
+	      this.setState({ showSleepDisp: true });
+	    }
 	  },
 
 	  render: function render() {
@@ -32621,6 +32629,7 @@
 	  },
 
 	  handleBack: function handleBack() {
+	    this.props.toggleWakeDisplay();
 	    this.setState({ hour: "", minute: "", sleepTimes: undefined });
 	  },
 
@@ -32754,6 +32763,7 @@
 	  },
 
 	  handleBack: function handleBack() {
+	    this.props.toggleSleepDisplay();
 	    this.setState({ wakeTimes: undefined });
 	  },
 

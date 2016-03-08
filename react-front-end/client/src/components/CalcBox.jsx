@@ -12,11 +12,19 @@ var CalcBox = React.createClass({
   },
 
   toggleWakeDisplay: function(){
-    this.setState({showWakeDisp: false});
+    if(this.state.showWakeDisp){
+      this.setState({showWakeDisp: false});
+    } else {
+        this.setState({showWakeDisp: true});
+    }
   },
 
   toggleSleepDisplay: function(){
-    this.setState({showSleepDisp: false});
+    if(this.state.showSleepDisp){
+      this.setState({showSleepDisp: false});
+    } else {
+        this.setState({showSleepDisp: true});
+    }
   },
 
   render: function(){
