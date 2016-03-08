@@ -10,6 +10,7 @@ var WakeDisplay = React.createClass({
 
   handleClick: function(){
     var wakeTimes = sleepCalc.calcWakeTime();
+    this.props.toggleSleepDisplay();
     this.setState({wakeTimes: wakeTimes});
   },
 
@@ -18,9 +19,15 @@ var WakeDisplay = React.createClass({
   },
 
   render: function(){
+    var displayClass = "show-me";
+
+    if(!this.props.hidden){
+      displayClass = "hide-me";
+    }
+
     if(this.state.wakeTimes === undefined){
       return(
-        <div>
+        <div className={displayClass}>
           <h2>Find out when to wake up if you sleep now:</h2>
           <button onClick={this.handleClick}>Generate Times to Wake</button>
         </div>

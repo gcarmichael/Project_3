@@ -19672,6 +19672,18 @@
 	var CalcBox = React.createClass({
 	  displayName: 'CalcBox',
 
+	  getInitialState: function getInitialState() {
+	    return { showSleepDisp: true, showWakeDisp: true };
+	  },
+
+	  toggleWakeDisplay: function toggleWakeDisplay() {
+	    this.setState({ showWakeDisp: false });
+	  },
+
+	  toggleSleepDisplay: function toggleSleepDisplay() {
+	    this.setState({ showSleepDisp: false });
+	  },
+
 	  render: function render() {
 	    return React.createElement(
 	      'div',
@@ -19681,13 +19693,8 @@
 	        null,
 	        ' Project 3 Sleep Calculator '
 	      ),
-	      React.createElement(SleepDisplay, null),
-	      React.createElement(
-	        'p',
-	        null,
-	        'Or'
-	      ),
-	      React.createElement(WakeDisplay, null)
+	      React.createElement(SleepDisplay, { hidden: this.state.showSleepDisp, toggleWakeDisplay: this.toggleWakeDisplay }),
+	      React.createElement(WakeDisplay, { hidden: this.state.showWakeDisp, toggleSleepDisplay: this.toggleSleepDisplay })
 	    );
 	  }
 	});
@@ -32609,6 +32616,7 @@
 	    var hour = this.state.hour;
 	    var minute = this.state.minute;
 	    var sleepTimes = sleepCalc.calcSleepTime(hour + ":" + minute);
+	    this.props.toggleWakeDisplay();
 	    this.setState({ hour: hour, minute: minute, sleepTimes: sleepTimes });
 	  },
 
@@ -32617,10 +32625,16 @@
 	  },
 
 	  render: function render() {
+	    var displayClass = "show-me";
+
+	    if (!this.props.hidden) {
+	      displayClass = "hide-me";
+	    }
+
 	    if (this.state.sleepTimes === undefined) {
 	      return React.createElement(
 	        'div',
-	        null,
+	        { className: displayClass },
 	        React.createElement(
 	          'h2',
 	          null,
@@ -32645,6 +32659,11 @@
 	            type: 'submit',
 	            value: 'Generate Times to Sleep'
 	          })
+	        ),
+	        React.createElement(
+	          'p',
+	          null,
+	          'Or'
 	        )
 	      );
 	    } else {
@@ -32730,6 +32749,7 @@
 
 	  handleClick: function handleClick() {
 	    var wakeTimes = sleepCalc.calcWakeTime();
+	    this.props.toggleSleepDisplay();
 	    this.setState({ wakeTimes: wakeTimes });
 	  },
 
@@ -32738,10 +32758,16 @@
 	  },
 
 	  render: function render() {
+	    var displayClass = "show-me";
+
+	    if (!this.props.hidden) {
+	      displayClass = "hide-me";
+	    }
+
 	    if (this.state.wakeTimes === undefined) {
 	      return React.createElement(
 	        'div',
-	        null,
+	        { className: displayClass },
 	        React.createElement(
 	          'h2',
 	          null,

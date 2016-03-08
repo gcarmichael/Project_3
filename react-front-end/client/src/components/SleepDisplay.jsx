@@ -20,6 +20,7 @@ var SleepDisplay = React.createClass({
     var hour = this.state.hour;
     var minute = this.state.minute;
     var sleepTimes = sleepCalc.calcSleepTime(hour+":"+minute);
+    this.props.toggleWakeDisplay();
     this.setState({hour: hour, minute: minute, sleepTimes: sleepTimes});
   },
 
@@ -28,9 +29,15 @@ var SleepDisplay = React.createClass({
   },
 
   render: function(){
+    var displayClass = "show-me";
+
+    if(!this.props.hidden){
+      displayClass = "hide-me";
+    }
+
     if(this.state.sleepTimes === undefined){
     return(
-      <div>
+      <div className={displayClass}>
       <h2>Enter when you have to wake up:</h2>
         <form className="wakeForm" onSubmit={this.handleSubmit}>
           <input
@@ -50,6 +57,7 @@ var SleepDisplay = React.createClass({
             value="Generate Times to Sleep"
           />
         </form>
+        <p>Or</p>
       </div>
     );
   } else {
