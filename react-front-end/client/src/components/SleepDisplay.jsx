@@ -43,13 +43,13 @@ var SleepDisplay = React.createClass({
         <form className="wakeForm" onSubmit={this.handleSubmit}>
           <input
             type="text"
-            placeholder="Hour"
+            placeholder="Hour (HH)"
             value={this.state.hour}
             onChange={this.handleHourChange}
           />
           <input
             type="text"
-            placeholder="Minute"
+            placeholder="Minute (mm)"
             value={this.state.minute}
             onChange={this.handleMinuteChange}
           />
@@ -58,7 +58,7 @@ var SleepDisplay = React.createClass({
             value="Generate Times to Sleep"
           />
         </form>
-        <p>________ or ________</p>
+        <p>or</p>
       </div>
     );
   } else {
@@ -71,11 +71,11 @@ var SleepDisplay = React.createClass({
               <li id="time1">{this.state.sleepTimes.sleep6}</li>
               <li id="time2">{this.state.sleepTimes.sleep5}</li>
               <br/>
-              <li id="time3">5/6 Cycles:</li>
+              <li id="time3">3/4 Cycles:</li>
               <li id="time3">{this.state.sleepTimes.sleep4}</li>
               <li id="time4">{this.state.sleepTimes.sleep3}</li>
               <br/>
-              <li id="time5">5/6 Cycles:</li>
+              <li id="time5">1/2 Cycles:</li>
               <li id="time5">{this.state.sleepTimes.sleep2}</li>
               <li id="time6">{this.state.sleepTimes.sleep1}</li>
             </ul>

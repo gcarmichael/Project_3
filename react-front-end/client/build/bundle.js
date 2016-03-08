@@ -32654,13 +32654,13 @@
 	          { className: 'wakeForm', onSubmit: this.handleSubmit },
 	          React.createElement('input', {
 	            type: 'text',
-	            placeholder: 'Hour',
+	            placeholder: 'Hour (HH)',
 	            value: this.state.hour,
 	            onChange: this.handleHourChange
 	          }),
 	          React.createElement('input', {
 	            type: 'text',
-	            placeholder: 'Minute',
+	            placeholder: 'Minute (mm)',
 	            value: this.state.minute,
 	            onChange: this.handleMinuteChange
 	          }),
@@ -32672,7 +32672,7 @@
 	        React.createElement(
 	          'p',
 	          null,
-	          '________ or ________'
+	          'or'
 	        )
 	      );
 	    } else {
@@ -32714,7 +32714,7 @@
 	          React.createElement(
 	            'li',
 	            { id: 'time3' },
-	            '5/6 Cycles:'
+	            '3/4 Cycles:'
 	          ),
 	          React.createElement(
 	            'li',
@@ -32730,7 +32730,7 @@
 	          React.createElement(
 	            'li',
 	            { id: 'time5' },
-	            '5/6 Cycles:'
+	            '1/2 Cycles:'
 	          ),
 	          React.createElement(
 	            'li',
@@ -32804,6 +32804,13 @@
 	          'button',
 	          { onClick: this.handleClick },
 	          'Generate Times to Wake'
+	        ),
+	        React.createElement('br', null),
+	        React.createElement('hr', null),
+	        React.createElement(
+	          'small',
+	          null,
+	          'On average, it takes 14 minutes to fall asleep. Your wake times are calculated with this assumption in mind.'
 	        )
 	      );
 	    } else {

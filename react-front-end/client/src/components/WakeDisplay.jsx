@@ -31,6 +31,9 @@ var WakeDisplay = React.createClass({
         <div className={displayClass}>
           <h2>Find out when to wake up if you sleep now:</h2>
           <button onClick={this.handleClick}>Generate Times to Wake</button>
+          <br/>
+          <hr/>
+          <small>On average, it takes 14 minutes to fall asleep. Your wake times are calculated with this assumption in mind.</small>
         </div>
       );
     } else {
