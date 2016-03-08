@@ -55,14 +55,15 @@ var SleepDisplay = React.createClass({
   } else {
       return(
         <div>
-          <h1>You should aim to sleep at:</h1>
+          <h4>Wake Time: {this.state.hour}:{this.state.minute}</h4>
+          <h2>You should aim to sleep at:</h2>
             <ul>
-              <li>{this.state.sleepTimes.sleep1}</li>
-              <li>{this.state.sleepTimes.sleep2}</li>
-              <li>{this.state.sleepTimes.sleep3}</li>
-              <li>{this.state.sleepTimes.sleep4}</li>
-              <li>{this.state.sleepTimes.sleep5}</li>
               <li>{this.state.sleepTimes.sleep6}</li>
+              <li>{this.state.sleepTimes.sleep5}</li>
+              <li>{this.state.sleepTimes.sleep4}</li>
+              <li>{this.state.sleepTimes.sleep3}</li>
+              <li>{this.state.sleepTimes.sleep2}</li>
+              <li>{this.state.sleepTimes.sleep1}</li>
             </ul>
             <a href="#" onClick={this.handleBack}>Back to Calulator</a>
         </div>

@@ -12,6 +12,7 @@ var CalcBox = React.createClass({
       <div>
         <h1> Project 3 Sleep Calculator </h1>
         <SleepDisplay></SleepDisplay>
+        <p>Or</p>
         <WakeDisplay></WakeDisplay>
       </div>
     );

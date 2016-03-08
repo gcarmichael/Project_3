@@ -19682,6 +19682,11 @@
 	        ' Project 3 Sleep Calculator '
 	      ),
 	      React.createElement(SleepDisplay, null),
+	      React.createElement(
+	        'p',
+	        null,
+	        'Or'
+	      ),
 	      React.createElement(WakeDisplay, null)
 	    );
 	  }
@@ -32647,7 +32652,15 @@
 	        'div',
 	        null,
 	        React.createElement(
-	          'h1',
+	          'h4',
+	          null,
+	          'Wake Time: ',
+	          this.state.hour,
+	          ':',
+	          this.state.minute
+	        ),
+	        React.createElement(
+	          'h2',
 	          null,
 	          'You should aim to sleep at:'
 	        ),
@@ -32657,22 +32670,7 @@
 	          React.createElement(
 	            'li',
 	            null,
-	            this.state.sleepTimes.sleep1
-	          ),
-	          React.createElement(
-	            'li',
-	            null,
-	            this.state.sleepTimes.sleep2
-	          ),
-	          React.createElement(
-	            'li',
-	            null,
-	            this.state.sleepTimes.sleep3
-	          ),
-	          React.createElement(
-	            'li',
-	            null,
-	            this.state.sleepTimes.sleep4
+	            this.state.sleepTimes.sleep6
 	          ),
 	          React.createElement(
 	            'li',
@@ -32682,7 +32680,22 @@
 	          React.createElement(
 	            'li',
 	            null,
-	            this.state.sleepTimes.sleep6
+	            this.state.sleepTimes.sleep4
+	          ),
+	          React.createElement(
+	            'li',
+	            null,
+	            this.state.sleepTimes.sleep3
+	          ),
+	          React.createElement(
+	            'li',
+	            null,
+	            this.state.sleepTimes.sleep2
+	          ),
+	          React.createElement(
+	            'li',
+	            null,
+	            this.state.sleepTimes.sleep1
 	          )
 	        ),
 	        React.createElement(
@@ -32711,8 +32724,85 @@
 	var WakeDisplay = React.createClass({
 	  displayName: 'WakeDisplay',
 
+	  getInitialState: function getInitialState() {
+	    return { wakeTimes: undefined };
+	  },
+
+	  handleClick: function handleClick() {
+	    var wakeTimes = sleepCalc.calcWakeTime();
+	    this.setState({ wakeTimes: wakeTimes });
+	  },
+
+	  handleBack: function handleBack() {
+	    this.setState({ wakeTimes: undefined });
+	  },
+
 	  render: function render() {
-	    return React.createElement('div', null);
+	    if (this.state.wakeTimes === undefined) {
+	      return React.createElement(
+	        'div',
+	        null,
+	        React.createElement(
+	          'h2',
+	          null,
+	          'Find out when to wake up if you sleep now:'
+	        ),
+	        React.createElement(
+	          'button',
+	          { onClick: this.handleClick },
+	          'Generate Times to Wake'
+	        )
+	      );
+	    } else {
+	      return React.createElement(
+	        'div',
+	        null,
+	        React.createElement(
+	          'h2',
+	          null,
+	          'If you sleep now, you should aim to wake at:'
+	        ),
+	        React.createElement(
+	          'ul',
+	          null,
+	          React.createElement(
+	            'li',
+	            null,
+	            this.state.wakeTimes.wake6
+	          ),
+	          React.createElement(
+	            'li',
+	            null,
+	            this.state.wakeTimes.wake5
+	          ),
+	          React.createElement(
+	            'li',
+	            null,
+	            this.state.wakeTimes.wake4
+	          ),
+	          React.createElement(
+	            'li',
+	            null,
+	            this.state.wakeTimes.wake3
+	          ),
+	          React.createElement(
+	            'li',
+	            null,
+	            this.state.wakeTimes.wake2
+	          ),
+	          React.createElement(
+	            'li',
+	            null,
+	            this.state.wakeTimes.wake1
+	          )
+	        ),
+	        React.createElement(
+	          'a',
+	          { href: '#', onClick: this.handleBack },
+	          'Back to Calulator'
+	        )
+	      );
+	    }
 	  }
 	});
 
