@@ -23,6 +23,10 @@ var SleepDisplay = React.createClass({
     this.setState({hour: hour, minute: minute, sleepTimes: sleepTimes});
   },
 
+  handleBack: function(){
+    this.setState({hour: "", minute: "", sleepTimes: undefined});
+  },
+
   render: function(){
     if(this.state.sleepTimes === undefined){
     return(
@@ -60,6 +64,7 @@ var SleepDisplay = React.createClass({
               <li>{this.state.sleepTimes.sleep5}</li>
               <li>{this.state.sleepTimes.sleep6}</li>
             </ul>
+            <a href="#" onClick={this.handleBack}>Back to Calulator</a>
         </div>
       );
     }

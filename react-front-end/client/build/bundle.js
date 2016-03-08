@@ -32607,6 +32607,10 @@
 	    this.setState({ hour: hour, minute: minute, sleepTimes: sleepTimes });
 	  },
 
+	  handleBack: function handleBack() {
+	    this.setState({ hour: "", minute: "", sleepTimes: undefined });
+	  },
+
 	  render: function render() {
 	    if (this.state.sleepTimes === undefined) {
 	      return React.createElement(
@@ -32680,6 +32684,11 @@
 	            null,
 	            this.state.sleepTimes.sleep6
 	          )
+	        ),
+	        React.createElement(
+	          'a',
+	          { href: '#', onClick: this.handleBack },
+	          'Back to Calulator'
 	        )
 	      );
 	    }
