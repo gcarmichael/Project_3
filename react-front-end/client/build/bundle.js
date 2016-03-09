@@ -19666,6 +19666,8 @@
 
 	var SleepDisplay = __webpack_require__(260);
 	var WakeDisplay = __webpack_require__(261);
+	var DataEntry = __webpack_require__(262);
+	var GraphDisplay = __webpack_require__(263);
 
 	var sleepCalc = new SleepCalc();
 
@@ -19673,7 +19675,7 @@
 	  displayName: 'CalcBox',
 
 	  getInitialState: function getInitialState() {
-	    return { showSleepDisp: true, showWakeDisp: true };
+	    return { showSleepDisp: true, showWakeDisp: true, showDataEntry: true, showGraphDisp: true };
 	  },
 
 	  toggleWakeDisplay: function toggleWakeDisplay() {
@@ -19692,6 +19694,22 @@
 	    }
 	  },
 
+	  toggleDataEntry: function toggleDataEntry() {
+	    if (this.state.showDataEntry) {
+	      this.setState({ showDataEntry: false });
+	    } else {
+	      this.setState({ showDataEntry: true });
+	    }
+	  },
+
+	  toggleGraphDisplay: function toggleGraphDisplay() {
+	    if (this.state.showGraphDisp) {
+	      this.setState({ showGraphDisp: false });
+	    } else {
+	      this.setState({ showGraphDisp: true });
+	    }
+	  },
+
 	  render: function render() {
 	    return React.createElement(
 	      'div',
@@ -19702,8 +19720,10 @@
 	        ' Project 3 Sleep Calculator '
 	      ),
 	      React.createElement('hr', null),
-	      React.createElement(SleepDisplay, { hidden: this.state.showSleepDisp, toggleWakeDisplay: this.toggleWakeDisplay }),
-	      React.createElement(WakeDisplay, { hidden: this.state.showWakeDisp, toggleSleepDisplay: this.toggleSleepDisplay })
+	      React.createElement(SleepDisplay, { display: this.state.showSleepDisp, toggleWakeDisplay: this.toggleWakeDisplay, toggleDataEntry: this.toggleDataEntry, toggleGraphDisplay: this.toggleGraphDisplay }),
+	      React.createElement(WakeDisplay, { display: this.state.showWakeDisp, toggleSleepDisplay: this.toggleSleepDisplay, toggleDataEntry: this.toggleDataEntry, toggleGraphDisplay: this.toggleGraphDisplay }),
+	      React.createElement(DataEntry, { display: this.state.showDataEntry }),
+	      React.createElement(GraphDisplay, { display: this.state.showGraphDisp })
 	    );
 	  }
 	});
@@ -32631,18 +32651,22 @@
 	    var meridiem = this.state.meridiem;
 	    var sleepTimes = sleepCalc.calcSleepTime(hour + ":" + minute + " " + meridiem);
 	    this.props.toggleWakeDisplay();
+	    this.props.toggleDataEntry();
+	    this.props.toggleGraphDisplay();
 	    this.setState({ hour: hour, minute: minute, meridiem: meridiem, sleepTimes: sleepTimes });
 	  },
 
 	  handleBack: function handleBack() {
 	    this.props.toggleWakeDisplay();
+	    this.props.toggleDataEntry();
+	    this.props.toggleGraphDisplay();
 	    this.setState({ hour: "1", minute: "00", meridiem: "AM", sleepTimes: undefined });
 	  },
 
 	  render: function render() {
 	    var displayClass = "show-me";
 
-	    if (!this.props.hidden) {
+	    if (!this.props.display) {
 	      displayClass = "hide-me";
 	    }
 
@@ -32655,7 +32679,7 @@
 	          null,
 	          'Find out when you should go to sleep.',
 	          React.createElement('br', null),
-	          'At what time are you waking up?'
+	          'What time are you waking up?'
 	        ),
 	        React.createElement(
 	          'select',
@@ -32890,18 +32914,22 @@
 	  handleClick: function handleClick() {
 	    var wakeTimes = sleepCalc.calcWakeTime();
 	    this.props.toggleSleepDisplay();
+	    this.props.toggleDataEntry();
+	    this.props.toggleGraphDisplay();
 	    this.setState({ wakeTimes: wakeTimes });
 	  },
 
 	  handleBack: function handleBack() {
 	    this.props.toggleSleepDisplay();
+	    this.props.toggleDataEntry();
+	    this.props.toggleGraphDisplay();
 	    this.setState({ wakeTimes: undefined });
 	  },
 
 	  render: function render() {
 	    var displayClass = "show-me";
 
-	    if (!this.props.hidden) {
+	    if (!this.props.display) {
 	      displayClass = "hide-me";
 	    }
 
@@ -32936,7 +32964,7 @@
 	        React.createElement(
 	          'p',
 	          null,
-	          'The calculator works by counting in sleep cycles. Sleep cycles are usually an hour and a half in length, and when you awake at the completion of a cycle, you tend to be more awake and less drowsy. If you wake up in the middle of a cycle, it\'s easy to feel groggy.',
+	          'The calculator works by counting in sleep cycles. Sleep cycles are usually an hour and a half in length, and when you awake at the completion of a cycle, you tend to feel more refreshed and less drowsy. If you wake up in the middle of a cycle, it\'s easy to feel groggy.',
 	          React.createElement('br', null),
 	          React.createElement('br', null),
 	          'You should aim to sleep for 5 or 6 cycles. These are indicated in',
@@ -32946,7 +32974,8 @@
 	            ' green '
 	          ),
 	          'in your result.'
-	        )
+	        ),
+	        React.createElement('hr', null)
 	      );
 	    } else {
 	      return React.createElement(
@@ -33019,6 +33048,70 @@
 	});
 
 	module.exports = WakeDisplay;
+
+/***/ },
+/* 262 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	var React = __webpack_require__(1);
+
+	var DataEntry = React.createClass({
+	  displayName: "DataEntry",
+
+	  render: function render() {
+	    var displayClass = "show-me";
+
+	    if (!this.props.hidden) {
+	      displayClass = "hide-me";
+	    }
+
+	    return React.createElement(
+	      "div",
+	      { className: displayClass },
+	      React.createElement(
+	        "p",
+	        null,
+	        "Data entry goes here."
+	      )
+	    );
+	  }
+	});
+
+	module.exports = DataEntry;
+
+/***/ },
+/* 263 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	var React = __webpack_require__(1);
+
+	var GraphDisplay = React.createClass({
+	  displayName: "GraphDisplay",
+
+	  render: function render() {
+	    var displayClass = "show-me";
+
+	    if (!this.props.hidden) {
+	      displayClass = "hide-me";
+	    }
+
+	    return React.createElement(
+	      "div",
+	      { className: displayClass },
+	      React.createElement(
+	        "p",
+	        null,
+	        "Graphs go here."
+	      )
+	    );
+	  }
+	});
+
+	module.exports = GraphDisplay;
 
 /***/ }
 /******/ ]);

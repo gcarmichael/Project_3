@@ -26,18 +26,22 @@ var SleepDisplay = React.createClass({
     var meridiem = this.state.meridiem;
     var sleepTimes = sleepCalc.calcSleepTime(hour + ":" + minute + " " + meridiem);
     this.props.toggleWakeDisplay();
+    this.props.toggleDataEntry();
+    this.props.toggleGraphDisplay();
     this.setState({hour: hour, minute: minute, meridiem: meridiem, sleepTimes: sleepTimes});
   },
 
   handleBack: function(){
     this.props.toggleWakeDisplay();
+    this.props.toggleDataEntry();
+    this.props.toggleGraphDisplay();
     this.setState({hour: "1", minute: "00", meridiem: "AM", sleepTimes: undefined});
   },
 
   render: function(){
     var displayClass = "show-me";
 
-    if(!this.props.hidden){
+    if(!this.props.display){
       displayClass = "hide-me";
     }
 
@@ -46,7 +50,7 @@ var SleepDisplay = React.createClass({
       <div className={displayClass}>
       <h2>Find out when you should go to sleep.
       <br/>
-      At what time are you waking up?</h2>
+      What time are you waking up?</h2>
       <select
         className="wakeHour"
         value={this.state.hour}

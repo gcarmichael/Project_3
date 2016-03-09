@@ -3,12 +3,14 @@ var SleepCalc = require('./../sleepCalc/sleepCalc');
 
 var SleepDisplay = require('./SleepDisplay');
 var WakeDisplay = require('./WakeDisplay');
+var DataEntry = require('./DataEntry');
+var GraphDisplay = require('./GraphDisplay');
 
 var sleepCalc = new SleepCalc();
 
 var CalcBox = React.createClass({
   getInitialState: function(){
-    return {showSleepDisp: true, showWakeDisp: true};
+    return {showSleepDisp: true, showWakeDisp: true, showDataEntry: true, showGraphDisp: true};
   },
 
   toggleWakeDisplay: function(){
@@ -27,13 +29,31 @@ var CalcBox = React.createClass({
     }
   },
 
+  toggleDataEntry: function(){
+    if(this.state.showDataEntry){
+      this.setState({showDataEntry: false});
+    } else {
+      this.setState({showDataEntry: true});
+    }
+  },
+
+  toggleGraphDisplay: function(){
+    if(this.state.showGraphDisp){
+      this.setState({showGraphDisp: false});
+    } else {
+      this.setState({showGraphDisp: true});
+    }
+  },
+
   render: function(){
     return(
       <div>
         <h1> Project 3 Sleep Calculator </h1>
         <hr/>
-        <SleepDisplay hidden={this.state.showSleepDisp} toggleWakeDisplay={this.toggleWakeDisplay}></SleepDisplay>
-        <WakeDisplay hidden={this.state.showWakeDisp} toggleSleepDisplay={this.toggleSleepDisplay}></WakeDisplay>
+        <SleepDisplay display={this.state.showSleepDisp} toggleWakeDisplay={this.toggleWakeDisplay} toggleDataEntry={this.toggleDataEntry} toggleGraphDisplay={this.toggleGraphDisplay} />
+        <WakeDisplay display={this.state.showWakeDisp} toggleSleepDisplay={this.toggleSleepDisplay} toggleDataEntry={this.toggleDataEntry} toggleGraphDisplay={this.toggleGraphDisplay} />
+        <DataEntry display={this.state.showDataEntry}/>
+        <GraphDisplay display={this.state.showGraphDisp}/>
       </div>
     );
   }
