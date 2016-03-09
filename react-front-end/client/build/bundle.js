@@ -19745,7 +19745,6 @@
 	};
 
 	SleepCalc.prototype = {
-
 	  addHours: function addHours(time) {
 	    var newTime = moment(time, 'h:mm A').add(this.cycleDuration, 'hours').format('h:mm A');
 	    return newTime;
@@ -32881,6 +32880,15 @@
 	            ' - 1.5 hours'
 	          )
 	        ),
+	        React.createElement(
+	          'small',
+	          null,
+	          'Remember that it takes around 14 minutes to fall asleep!',
+	          React.createElement('br', null),
+	          'The times listed are when you should be falling asleep, not when you should be heading to bed!'
+	        ),
+	        React.createElement('br', null),
+	        React.createElement('br', null),
 	        React.createElement(
 	          'a',
 	          { href: '#', onClick: this.handleBack },

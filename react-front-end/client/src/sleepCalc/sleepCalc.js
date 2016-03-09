@@ -7,7 +7,6 @@ var SleepCalc = function(){
 };
 
 SleepCalc.prototype = {
-
   addHours: function(time){
     var newTime = moment(time, 'h:mm A').add(this.cycleDuration, 'hours').format('h:mm A');
     return newTime;

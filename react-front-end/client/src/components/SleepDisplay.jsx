@@ -108,6 +108,11 @@ var SleepDisplay = React.createClass({
               <li id="time5">{this.state.sleepTimes.sleep2} - 3 hours</li>
               <li id="time6">{this.state.sleepTimes.sleep1} - 1.5 hours</li>
             </ul>
+            <small>Remember that it takes around 14 minutes to fall asleep!
+            <br/>
+            The times listed are when you should be falling asleep, not when you should be heading to bed!</small>
+            <br/>
+            <br/>
             <a href="#" onClick={this.handleBack}>Back to Calulator</a>
         </div>
       );
