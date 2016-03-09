@@ -32609,7 +32609,7 @@
 	  displayName: 'SleepDisplay',
 
 	  getInitialState: function getInitialState() {
-	    return { hour: "", minute: "", sleepTimes: undefined };
+	    return { hour: "1", minute: "00", meridiem: "AM", sleepTimes: undefined };
 	  },
 
 	  handleHourChange: function handleHourChange(event) {
@@ -32620,18 +32620,23 @@
 	    this.setState({ minute: event.target.value });
 	  },
 
+	  handleMeridiemChange: function handleMeridiemChange(event) {
+	    this.setState({ meridiem: event.target.value });
+	  },
+
 	  handleSubmit: function handleSubmit(event) {
 	    event.preventDefault();
 	    var hour = this.state.hour;
 	    var minute = this.state.minute;
-	    var sleepTimes = sleepCalc.calcSleepTime(hour + ":" + minute);
+	    var meridiem = this.state.meridiem;
+	    var sleepTimes = sleepCalc.calcSleepTime(hour + ":" + minute + " " + meridiem);
 	    this.props.toggleWakeDisplay();
-	    this.setState({ hour: hour, minute: minute, sleepTimes: sleepTimes });
+	    this.setState({ hour: hour, minute: minute, meridiem: meridiem, sleepTimes: sleepTimes });
 	  },
 
 	  handleBack: function handleBack() {
 	    this.props.toggleWakeDisplay();
-	    this.setState({ hour: "", minute: "", sleepTimes: undefined });
+	    this.setState({ hour: "1", minute: "00", meridiem: "AM", sleepTimes: undefined });
 	  },
 
 	  render: function render() {
@@ -32653,25 +32658,122 @@
 	          'At what time are you waking up?'
 	        ),
 	        React.createElement(
-	          'form',
-	          { className: 'wakeForm', onSubmit: this.handleSubmit },
-	          React.createElement('input', {
-	            type: 'text',
-	            placeholder: 'Hour',
+	          'select',
+	          {
+	            className: 'wakeHour',
 	            value: this.state.hour,
-	            onChange: this.handleHourChange
-	          }),
-	          React.createElement('input', {
-	            type: 'text',
-	            placeholder: 'Minute',
+	            onChange: this.handleHourChange,
+	            defaultValue: this.handleHourChange },
+	          React.createElement(
+	            'option',
+	            null,
+	            '1'
+	          ),
+	          React.createElement(
+	            'option',
+	            null,
+	            '2'
+	          ),
+	          React.createElement(
+	            'option',
+	            null,
+	            '3'
+	          ),
+	          React.createElement(
+	            'option',
+	            null,
+	            '4'
+	          ),
+	          React.createElement(
+	            'option',
+	            null,
+	            '5'
+	          ),
+	          React.createElement(
+	            'option',
+	            null,
+	            '6'
+	          ),
+	          React.createElement(
+	            'option',
+	            null,
+	            '7'
+	          ),
+	          React.createElement(
+	            'option',
+	            null,
+	            '8'
+	          ),
+	          React.createElement(
+	            'option',
+	            null,
+	            '9'
+	          ),
+	          React.createElement(
+	            'option',
+	            null,
+	            '10'
+	          ),
+	          React.createElement(
+	            'option',
+	            null,
+	            '11'
+	          ),
+	          React.createElement(
+	            'option',
+	            null,
+	            '12'
+	          )
+	        ),
+	        React.createElement(
+	          'select',
+	          {
+	            className: 'wakeMinute',
 	            value: this.state.minute,
-	            onChange: this.handleMinuteChange
-	          }),
-	          React.createElement('br', null),
-	          React.createElement('input', {
-	            type: 'submit',
-	            value: 'Generate Times to Sleep'
-	          })
+	            onChange: this.handleMinuteChange },
+	          React.createElement(
+	            'option',
+	            null,
+	            '00'
+	          ),
+	          React.createElement(
+	            'option',
+	            null,
+	            '15'
+	          ),
+	          React.createElement(
+	            'option',
+	            null,
+	            '30'
+	          ),
+	          React.createElement(
+	            'option',
+	            null,
+	            '45'
+	          )
+	        ),
+	        React.createElement(
+	          'select',
+	          {
+	            className: 'wakeMeridiem',
+	            value: this.state.meridiem,
+	            onChange: this.handleMeridiemChange },
+	          React.createElement(
+	            'option',
+	            null,
+	            'AM'
+	          ),
+	          React.createElement(
+	            'option',
+	            null,
+	            'PM'
+	          )
+	        ),
+	        React.createElement('br', null),
+	        React.createElement(
+	          'button',
+	          { onClick: this.handleSubmit },
+	          'Generate Times to Sleep'
 	        ),
 	        React.createElement(
 	          'p',
@@ -32689,7 +32791,9 @@
 	          'Wake Time: ',
 	          this.state.hour,
 	          ':',
-	          this.state.minute
+	          this.state.minute,
+	          ' ',
+	          this.state.meridiem
 	        ),
 	        React.createElement(
 	          'h2',
@@ -32820,7 +32924,8 @@
 	        React.createElement(
 	          'small',
 	          null,
-	          'On average, it takes 14 minutes to fall asleep. Your wake times are calculated with this assumption in mind.'
+	          'On average, it takes 14 minutes to fall asleep. Your wake times are calculated with this assumption in mind.',
+	          React.createElement('br', null)
 	        ),
 	        React.createElement('hr', null),
 	        React.createElement(

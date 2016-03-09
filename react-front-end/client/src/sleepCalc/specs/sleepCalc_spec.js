@@ -39,15 +39,13 @@ describe('SleepCalc', function(){
 
   it('should be able to set a wakeTime through calcSleepTime', function(){
     var sleepCalc = new SleepCalc();
-    sleepCalc.calcSleepTime("9:00 AM");
+    sleepCalc.calcSleepTime("9:00");
     assert.deepEqual(moment("9:00 AM", "h:mm A").format('h:mm A'), sleepCalc.wakeTime);
   });
 
   it('should be able to calculate four sleep times', function(){
     var sleepCalc = new SleepCalc();
     var sleepTimes = sleepCalc.calcSleepTime("09:00");
-
-    console.log(sleepTimes);
 
     assert.equal(moment("9:00 AM", "h:mm A").subtract(1.5, 'hours').format('h:mm A'), sleepTimes.sleep1);
     assert.equal(moment(sleepTimes.sleep1, 'h:mm A').subtract(1.5, 'hours').format('h:mm A'), sleepTimes.sleep2)
