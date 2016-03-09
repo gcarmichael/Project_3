@@ -13,8 +13,8 @@ describe('SleepCalc', function(){
   it('should be able to take moments as values', function(){
     var sleepCalc = new SleepCalc();
     assert.deepEqual(undefined, sleepCalc.wakeTime);
-    sleepCalc.wakeTime = moment().format('HH:mm');
-    assert.equal(moment().format('HH:mm'), sleepCalc.wakeTime);
+    sleepCalc.wakeTime = moment().format('h:mm A');
+    assert.equal(moment().format('h:mm A'), sleepCalc.wakeTime);
   });
 
   it('should have a duration variable with a value of 1.5 hours', function(){
@@ -25,22 +25,22 @@ describe('SleepCalc', function(){
   it('should be able to set a sleepTime through calcWakeTime', function(){
     var sleepCalc = new SleepCalc();
     sleepCalc.calcWakeTime();
-    assert.deepEqual(moment().add(14, 'minutes').format('HH:mm'), sleepCalc.sleepTime);
+    assert.deepEqual(moment().add(14, 'minutes').format('h:mm A'), sleepCalc.sleepTime);
   });
 
   it('should be able to calculate four wake times', function(){
     var sleepCalc = new SleepCalc();
     var wakeTimes = sleepCalc.calcWakeTime();
-    assert.equal(moment().add(14, 'minutes').add(1.5, 'hours').format('HH:mm'), wakeTimes.wake1);
-    assert.equal(moment(wakeTimes.wake1, 'HH:mm').add(1.5, 'hours').format('HH:mm'), wakeTimes.wake2);
-    assert.equal(moment(wakeTimes.wake2, 'HH:mm').add(1.5, 'hours').format('HH:mm'), wakeTimes.wake3);
-    assert.equal(moment(wakeTimes.wake3, 'HH:mm').add(1.5, 'hours').format('HH:mm'), wakeTimes.wake4);
+    assert.equal(moment().add(14, 'minutes').add(1.5, 'hours').format('h:mm A'), wakeTimes.wake1);
+    assert.equal(moment(wakeTimes.wake1, 'h:mm A').add(1.5, 'hours').format('h:mm A'), wakeTimes.wake2);
+    assert.equal(moment(wakeTimes.wake2, 'h:mm A').add(1.5, 'hours').format('h:mm A'), wakeTimes.wake3);
+    assert.equal(moment(wakeTimes.wake3, 'h:mm A').add(1.5, 'hours').format('h:mm A'), wakeTimes.wake4);
   });
 
   it('should be able to set a wakeTime through calcSleepTime', function(){
     var sleepCalc = new SleepCalc();
-    sleepCalc.calcSleepTime("09:00");
-    assert.deepEqual(moment("09:00", "HH:mm").format('HH:mm'), sleepCalc.wakeTime);
+    sleepCalc.calcSleepTime("9:00 AM");
+    assert.deepEqual(moment("9:00 AM", "h:mm A").format('h:mm A'), sleepCalc.wakeTime);
   });
 
   it('should be able to calculate four sleep times', function(){
@@ -49,11 +49,11 @@ describe('SleepCalc', function(){
 
     console.log(sleepTimes);
 
-    assert.equal(moment("09:00", "HH:mm").subtract(1.5, 'hours').format('HH:mm'), sleepTimes.sleep1);
-    assert.equal(moment(sleepTimes.sleep1, 'HH:mm').subtract(1.5, 'hours').format('HH:mm'), sleepTimes.sleep2)
-    assert.equal(moment(sleepTimes.sleep2, 'HH:mm').subtract(1.5, 'hours').format('HH:mm'), sleepTimes.sleep3)
-    assert.equal(moment(sleepTimes.sleep3, 'HH:mm').subtract(1.5, 'hours').format('HH:mm'), sleepTimes.sleep4)
-    assert.equal(moment(sleepTimes.sleep4, 'HH:mm').subtract(1.5, 'hours').format('HH:mm'), sleepTimes.sleep5)
+    assert.equal(moment("9:00 AM", "h:mm A").subtract(1.5, 'hours').format('h:mm A'), sleepTimes.sleep1);
+    assert.equal(moment(sleepTimes.sleep1, 'h:mm A').subtract(1.5, 'hours').format('h:mm A'), sleepTimes.sleep2)
+    assert.equal(moment(sleepTimes.sleep2, 'h:mm A').subtract(1.5, 'hours').format('h:mm A'), sleepTimes.sleep3)
+    assert.equal(moment(sleepTimes.sleep3, 'h:mm A').subtract(1.5, 'hours').format('h:mm A'), sleepTimes.sleep4)
+    assert.equal(moment(sleepTimes.sleep4, 'h:mm A').subtract(1.5, 'hours').format('h:mm A'), sleepTimes.sleep5)
   });
 
 });
