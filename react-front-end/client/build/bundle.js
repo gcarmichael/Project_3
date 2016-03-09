@@ -33063,7 +33063,7 @@
 	  render: function render() {
 	    var displayClass = "show-me";
 
-	    if (!this.props.hidden) {
+	    if (!this.props.display) {
 	      displayClass = "hide-me";
 	    }
 
@@ -33095,7 +33095,7 @@
 	  render: function render() {
 	    var displayClass = "show-me";
 
-	    if (!this.props.hidden) {
+	    if (!this.props.display) {
 	      displayClass = "hide-me";
 	    }
 

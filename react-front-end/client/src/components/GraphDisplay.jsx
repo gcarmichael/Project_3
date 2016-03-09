@@ -4,7 +4,7 @@ var GraphDisplay = React.createClass({
   render: function(){
     var displayClass = "show-me";
 
-    if(!this.props.hidden){
+    if(!this.props.display){
       displayClass = "hide-me";
     }
 
