@@ -39,20 +39,23 @@ var SleepDisplay = React.createClass({
     if(this.state.sleepTimes === undefined){
     return(
       <div className={displayClass}>
-      <h2>Enter when you have to wake up:</h2>
+      <h2>Find out when you should go to sleep.
+      <br/>
+      At what time are you waking up?</h2>
         <form className="wakeForm" onSubmit={this.handleSubmit}>
           <input
             type="text"
-            placeholder="Hour (HH)"
+            placeholder="Hour"
             value={this.state.hour}
             onChange={this.handleHourChange}
           />
           <input
             type="text"
-            placeholder="Minute (mm)"
+            placeholder="Minute"
             value={this.state.minute}
             onChange={this.handleMinuteChange}
           />
+          <br/>
           <input
             type="submit"
             value="Generate Times to Sleep"
@@ -68,16 +71,16 @@ var SleepDisplay = React.createClass({
           <h2>You should aim to sleep at:</h2>
             <ul>
               <li id="time1">5/6 Cycles:</li>
-              <li id="time1">{this.state.sleepTimes.sleep6}</li>
-              <li id="time2">{this.state.sleepTimes.sleep5}</li>
+              <li id="time1">{this.state.sleepTimes.sleep6} - 9 hours</li>
+              <li id="time2">{this.state.sleepTimes.sleep5} - 7.5 hours</li>
               <br/>
               <li id="time3">3/4 Cycles:</li>
-              <li id="time3">{this.state.sleepTimes.sleep4}</li>
-              <li id="time4">{this.state.sleepTimes.sleep3}</li>
+              <li id="time3">{this.state.sleepTimes.sleep4} - 6 hours</li>
+              <li id="time4">{this.state.sleepTimes.sleep3} - 4.5 hours</li>
               <br/>
               <li id="time5">1/2 Cycles:</li>
-              <li id="time5">{this.state.sleepTimes.sleep2}</li>
-              <li id="time6">{this.state.sleepTimes.sleep1}</li>
+              <li id="time5">{this.state.sleepTimes.sleep2} - 3 hours</li>
+              <li id="time6">{this.state.sleepTimes.sleep1} - 1.5 hours</li>
             </ul>
             <a href="#" onClick={this.handleBack}>Back to Calulator</a>
         </div>

@@ -1,6 +1,13 @@
 body{
+  font-family: 'Lato', sans-serif;
+  max-width: 80%;
+  margin: 0 auto;
   background-color:   #3d3d5c;
   color:  #d1d1e0;
+}
+
+div {
+  text-align: center;
 }
 
 .hide-me{
@@ -9,6 +16,7 @@ body{
 
 li {
   list-style: none;
+  padding-right: 50px;
 }
 
 #time1, #time2{

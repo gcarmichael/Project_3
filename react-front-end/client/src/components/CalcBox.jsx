@@ -31,6 +31,7 @@ var CalcBox = React.createClass({
     return(
       <div>
         <h1> Project 3 Sleep Calculator </h1>
+        <hr/>
         <SleepDisplay hidden={this.state.showSleepDisp} toggleWakeDisplay={this.toggleWakeDisplay}></SleepDisplay>
         <WakeDisplay hidden={this.state.showWakeDisp} toggleSleepDisplay={this.toggleSleepDisplay}></WakeDisplay>
       </div>

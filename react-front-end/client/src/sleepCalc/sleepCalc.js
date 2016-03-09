@@ -19,7 +19,7 @@ SleepCalc.prototype = {
   },
 
   calcWakeTime: function(){
-    this.sleepTime = moment().format('HH:mm'); // Add 14 minutes
+    this.sleepTime = moment().add(14, 'minutes').format('HH:mm');
     var wake1 = this.addHours(this.sleepTime);
     var wake2 = this.addHours(wake1);
     var wake3 = this.addHours(wake2);

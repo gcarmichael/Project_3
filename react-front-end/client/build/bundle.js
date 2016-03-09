@@ -19701,6 +19701,7 @@
 	        null,
 	        ' Project 3 Sleep Calculator '
 	      ),
+	      React.createElement('hr', null),
 	      React.createElement(SleepDisplay, { hidden: this.state.showSleepDisp, toggleWakeDisplay: this.toggleWakeDisplay }),
 	      React.createElement(WakeDisplay, { hidden: this.state.showWakeDisp, toggleSleepDisplay: this.toggleSleepDisplay })
 	    );
@@ -19736,7 +19737,7 @@
 	  },
 
 	  calcWakeTime: function calcWakeTime() {
-	    this.sleepTime = moment().format('HH:mm'); // Add 14 minutes
+	    this.sleepTime = moment().add(14, 'minutes').format('HH:mm');
 	    var wake1 = this.addHours(this.sleepTime);
 	    var wake2 = this.addHours(wake1);
 	    var wake3 = this.addHours(wake2);
@@ -32647,23 +32648,26 @@
 	        React.createElement(
 	          'h2',
 	          null,
-	          'Enter when you have to wake up:'
+	          'Find out when you should go to sleep.',
+	          React.createElement('br', null),
+	          'At what time are you waking up?'
 	        ),
 	        React.createElement(
 	          'form',
 	          { className: 'wakeForm', onSubmit: this.handleSubmit },
 	          React.createElement('input', {
 	            type: 'text',
-	            placeholder: 'Hour (HH)',
+	            placeholder: 'Hour',
 	            value: this.state.hour,
 	            onChange: this.handleHourChange
 	          }),
 	          React.createElement('input', {
 	            type: 'text',
-	            placeholder: 'Minute (mm)',
+	            placeholder: 'Minute',
 	            value: this.state.minute,
 	            onChange: this.handleMinuteChange
 	          }),
+	          React.createElement('br', null),
 	          React.createElement('input', {
 	            type: 'submit',
 	            value: 'Generate Times to Sleep'
@@ -32703,12 +32707,14 @@
 	          React.createElement(
 	            'li',
 	            { id: 'time1' },
-	            this.state.sleepTimes.sleep6
+	            this.state.sleepTimes.sleep6,
+	            ' - 9 hours'
 	          ),
 	          React.createElement(
 	            'li',
 	            { id: 'time2' },
-	            this.state.sleepTimes.sleep5
+	            this.state.sleepTimes.sleep5,
+	            ' - 7.5 hours'
 	          ),
 	          React.createElement('br', null),
 	          React.createElement(
@@ -32719,12 +32725,14 @@
 	          React.createElement(
 	            'li',
 	            { id: 'time3' },
-	            this.state.sleepTimes.sleep4
+	            this.state.sleepTimes.sleep4,
+	            ' - 6 hours'
 	          ),
 	          React.createElement(
 	            'li',
 	            { id: 'time4' },
-	            this.state.sleepTimes.sleep3
+	            this.state.sleepTimes.sleep3,
+	            ' - 4.5 hours'
 	          ),
 	          React.createElement('br', null),
 	          React.createElement(
@@ -32735,12 +32743,14 @@
 	          React.createElement(
 	            'li',
 	            { id: 'time5' },
-	            this.state.sleepTimes.sleep2
+	            this.state.sleepTimes.sleep2,
+	            ' - 3 hours'
 	          ),
 	          React.createElement(
 	            'li',
 	            { id: 'time6' },
-	            this.state.sleepTimes.sleep1
+	            this.state.sleepTimes.sleep1,
+	            ' - 1.5 hours'
 	          )
 	        ),
 	        React.createElement(
@@ -32806,11 +32816,31 @@
 	          'Generate Times to Wake'
 	        ),
 	        React.createElement('br', null),
-	        React.createElement('hr', null),
+	        React.createElement('br', null),
 	        React.createElement(
 	          'small',
 	          null,
 	          'On average, it takes 14 minutes to fall asleep. Your wake times are calculated with this assumption in mind.'
+	        ),
+	        React.createElement('hr', null),
+	        React.createElement(
+	          'h3',
+	          null,
+	          'Sleep Cycles'
+	        ),
+	        React.createElement(
+	          'p',
+	          null,
+	          'The calculator works by counting in sleep cycles. Sleep cycles are usually an hour and a half in length, and when you awake at the completion of a cycle, you tend to be more awake and less drowsy. If you wake up in the middle of a cycle, it\'s easy to feel groggy.',
+	          React.createElement('br', null),
+	          React.createElement('br', null),
+	          'You should aim to sleep for 5 or 6 cycles. These are indicated in',
+	          React.createElement(
+	            'span',
+	            { id: 'time1' },
+	            ' green '
+	          ),
+	          'in your result.'
 	        )
 	      );
 	    } else {

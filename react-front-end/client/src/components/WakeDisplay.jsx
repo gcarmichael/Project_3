@@ -32,8 +32,17 @@ var WakeDisplay = React.createClass({
           <h2>Find out when to wake up if you sleep now:</h2>
           <button onClick={this.handleClick}>Generate Times to Wake</button>
           <br/>
-          <hr/>
+          <br/>
           <small>On average, it takes 14 minutes to fall asleep. Your wake times are calculated with this assumption in mind.</small>
+          <hr/>
+          <h3>Sleep Cycles</h3>
+          <p>The calculator works by counting in sleep cycles. Sleep cycles are usually an hour and a half in length, and when you awake at the completion of a cycle, you tend to be more awake and less drowsy. If you wake up in the middle of a cycle, it's easy to feel groggy.
+          <br/>
+          <br/>
+          You should aim to sleep for 5 or 6 cycles. These are indicated in
+          <span id="time1"> green </span>
+          in your result.
+          </p>
         </div>
       );
     } else {
